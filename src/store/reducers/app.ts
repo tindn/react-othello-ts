@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Color } from "../../types";
+import { getPossibleMoves } from "../../gameLogic";
+import { Color, GamePieces } from "../../types";
 
 interface AppState {
-  gamePieces: { [key: string]: Color };
+  gamePieces: GamePieces;
+  nextColorToPlay: Color;
+  possibleMoves: { [key: string]: boolean };
 }
 
 const DEFAULT_STATE: AppState = {
@@ -12,12 +15,23 @@ const DEFAULT_STATE: AppState = {
     35: Color.black,
     36: Color.white,
   },
+  nextColorToPlay: Color.black,
+  possibleMoves: {},
 };
 
 const AppSlice = createSlice({
   name: "App",
   initialState: DEFAULT_STATE,
-  reducers: {},
+  reducers: {
+    updatePossibleMoves(state) {
+      state.possibleMoves = getPossibleMoves(
+        state.nextColorToPlay,
+        state.gamePieces
+      );
+    },
+  },
 });
+
+export const { updatePossibleMoves } = AppSlice.actions;
 
 export default AppSlice.reducer;

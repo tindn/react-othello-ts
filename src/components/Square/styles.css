@@ -7,12 +7,16 @@
   margin: 2px;
 }
 
+.square .index-debug {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .gamepiece {
   border-radius: 50%;
-  width: 65%;
-  height: 65%;
+  width: 75%;
+  height: 75%;
   align-self: center;
-  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.25) inset, 2px 2px 10px white inset;
 }
 
 .gamepiece.color-black {
@@ -25,4 +29,19 @@
 
 .gamepiece.color-transparent {
   display: none;
+}
+
+.possible {
+  border-radius: 50%;
+  width: 75%;
+  height: 75%;
+  align-self: center;
+  border-width: 2px;
+  border-style: solid;
+  display: none;
+}
+
+.possible.color-black {
+  display: block;
+  border-color: black;
 }
