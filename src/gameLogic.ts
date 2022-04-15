@@ -40,7 +40,7 @@ export function getPossibleMoves(colorToMove: Color, gamePieces: GamePieces) {
       // keep moving in each direction
       while (canMove) {
         const nextSquarePosition = moveOne(currentPosition, direction);
-        if (nextSquarePosition == -1) {
+        if (nextSquarePosition === -1) {
           canMove = false;
           break;
         }
