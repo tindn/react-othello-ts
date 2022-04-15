@@ -5,7 +5,7 @@ import { Color, GamePieces } from "../../types";
 interface AppState {
   gamePieces: GamePieces;
   nextColorToPlay: Color;
-  possibleMoves: { [key: string]: boolean };
+  possibleMoves: { [key: string]: number[] };
 }
 
 const DEFAULT_STATE: AppState = {
@@ -17,10 +17,10 @@ const DEFAULT_STATE: AppState = {
   },
   nextColorToPlay: Color.black,
   possibleMoves: {
-    19: true,
-    26: true,
-    37: true,
-    44: true,
+    19: [27],
+    26: [27],
+    37: [36],
+    44: [36],
   },
 };
 

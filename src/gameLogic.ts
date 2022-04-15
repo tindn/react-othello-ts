@@ -30,7 +30,7 @@ export function getGamePiecesByColor(gamePieces: GamePieces) {
 }
 
 export function getPossibleMoves(colorToMove: Color, gamePieces: GamePieces) {
-  const possibleMoves: { [key: string]: boolean } = {};
+  const possibleMoves: { [key: string]: number[] } = {};
   const gamePiecesByColor = getGamePiecesByColor(gamePieces);
   gamePiecesByColor[colorToMove].forEach((piece) => {
     allDirections.forEach((direction) => {
@@ -56,7 +56,7 @@ export function getPossibleMoves(colorToMove: Color, gamePieces: GamePieces) {
             break;
           }
           // able to capture some
-          possibleMoves[nextSquarePosition.toString()] = true;
+          possibleMoves[nextSquarePosition.toString()] = captures;
           break;
         }
         // next move is opponent
