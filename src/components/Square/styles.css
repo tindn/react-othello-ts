@@ -12,26 +12,14 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
-.circle {
+.square .circle {
   border-radius: 50%;
   width: 75%;
   height: 75%;
   align-self: center;
 }
 
-.background-black {
-  background-color: black;
-}
-
-.background-white {
-  background-color: white;
-}
-
-.background-transparent {
-  background-color: transparent;
-}
-
-.border {
+.square .border {
   border: 1px solid rgba(0, 0, 0, 0.7);
 }
 

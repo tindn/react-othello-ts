@@ -34,7 +34,7 @@ export function Square(props: Props) {
         dispatch(onMoveClick({ selectedSquare: props.index.toString() }));
       }}
     >
-      <span className="index-debug">{props.index}</span>
+      {/* <span className="index-debug">{props.index}</span> */}
       <div
         className={`circle background-${gamePieceColor} ${
           isPossibleMove ? "border" : ""

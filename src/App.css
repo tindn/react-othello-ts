@@ -36,3 +36,15 @@
     transform: translateY(0px);
   }
 }
+
+.background-black {
+  background-color: black;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.background-transparent {
+  background-color: transparent;
+}

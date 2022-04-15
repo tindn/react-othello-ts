@@ -28,12 +28,6 @@ const AppSlice = createSlice({
   name: "App",
   initialState: DEFAULT_STATE,
   reducers: {
-    updatePossibleMoves(state) {
-      state.possibleMoves = getPossibleMoves(
-        state.nextColorToPlay,
-        state.gamePieces
-      );
-    },
     onMoveClick(state, action: { payload: { selectedSquare: string } }) {
       const gamePiecesToCapture =
         state.possibleMoves[action.payload.selectedSquare];
@@ -49,9 +43,12 @@ const AppSlice = createSlice({
       state.possibleMoves = getPossibleMoves(nextColor, state.gamePieces) || {};
       state.nextColorToPlay = nextColor;
     },
+    restartGame() {
+      return DEFAULT_STATE;
+    },
   },
 });
 
-export const { updatePossibleMoves, onMoveClick } = AppSlice.actions;
+export const { onMoveClick, restartGame } = AppSlice.actions;
 
 export default AppSlice.reducer;
