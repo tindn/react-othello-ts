@@ -1,4 +1,5 @@
-import { useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { onMoveClick } from "../../store/reducers/app";
 import { Color } from "../../types";
 import "./styles.css";
 
@@ -19,8 +20,20 @@ export function Square(props: Props) {
     (state) => state.app.possibleMoves[props.index.toString()]
   );
 
+  const dispatch = useAppDispatch();
+
   return (
-    <div className={`square col-${props.column} row-${props.row}`}>
+    <div
+      className={`square col-${props.column} row-${props.row} ${
+        isPossibleMove ? "valid" : "invalid"
+      }`}
+      onClick={() => {
+        if (!isPossibleMove) {
+          return;
+        }
+        dispatch(onMoveClick({ selectedSquare: props.index.toString() }));
+      }}
+    >
       <span className="index-debug">{props.index}</span>
       <div
         className={`circle background-${gamePieceColor} ${

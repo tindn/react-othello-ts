@@ -34,9 +34,24 @@ const AppSlice = createSlice({
         state.gamePieces
       );
     },
+    onMoveClick(state, action: { payload: { selectedSquare: string } }) {
+      const gamePiecesToCapture =
+        state.possibleMoves[action.payload.selectedSquare];
+      if (!gamePiecesToCapture || !gamePiecesToCapture.length) {
+        return;
+      }
+      state.gamePieces[action.payload.selectedSquare] = state.nextColorToPlay;
+      gamePiecesToCapture.forEach((captured) => {
+        state.gamePieces[captured] = state.nextColorToPlay;
+      });
+      const nextColor =
+        state.nextColorToPlay === Color.black ? Color.white : Color.black;
+      state.possibleMoves = getPossibleMoves(nextColor, state.gamePieces) || {};
+      state.nextColorToPlay = nextColor;
+    },
   },
 });
 
-export const { updatePossibleMoves } = AppSlice.actions;
+export const { updatePossibleMoves, onMoveClick } = AppSlice.actions;
 
 export default AppSlice.reducer;
