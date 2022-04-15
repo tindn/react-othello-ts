@@ -4,7 +4,7 @@ import { Color } from "../../types";
 import "./styles.css";
 
 interface Props {
-  index: number;
+  index: string;
   row: number;
   column: number;
 }
@@ -13,11 +13,11 @@ export function Square(props: Props) {
   // transparent means there's no game piece in the square
   const gamePieceColor =
     useAppSelector(
-      (state): Color | undefined => state.app.gamePieces[props.index.toString()]
+      (state): Color | undefined => state.app.gamePieces[props.index]
     ) || "transparent";
 
   const isPossibleMove = useAppSelector(
-    (state) => state.app.possibleMoves[props.index.toString()]
+    (state) => state.app.possibleMoves[props.index]
   );
 
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ export function Square(props: Props) {
         if (!isPossibleMove) {
           return;
         }
-        dispatch(onMoveClick({ selectedSquare: props.index.toString() }));
+        dispatch(onMoveClick({ selectedSquare: props.index }));
       }}
     >
       {/* <span className="index-debug">{props.index}</span> */}

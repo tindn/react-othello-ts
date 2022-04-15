@@ -8,6 +8,11 @@
   pointer-events: none;
 }
 
+/* 
+ * Eachs quare is 100px x 100px, with 2px margin
+ * for an 8x8 board, the squares take up 800xpx + 7 * 2 = 814px
+ * The board has 10px padding on each side, resulting in 834px
+ */
 .App-board {
   display: flex;
   flex-wrap: wrap;
@@ -17,24 +22,6 @@
   height: 834px;
   padding: 10px;
   background-color: #222;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
 }
 
 .background-black {

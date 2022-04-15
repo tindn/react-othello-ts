@@ -11,7 +11,6 @@ export function AppHeader() {
   const gamePiecesByColor = getGamePiecesByColor(gamePieces);
   const hasPossibleMoves =
     Object.keys(useAppSelector((state) => state.app.possibleMoves)).length > 0;
-  // const hasPossibleMoves = false;
   const dispatch = useAppDispatch();
   return (
     <header className="App-header">

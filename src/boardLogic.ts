@@ -1,5 +1,5 @@
 import { Direction } from "./types";
-const BOARD_SIZE = 8;
+export const BOARD_SIZE = 8;
 
 export function getRowNumber(index: number, size: number) {
   return Math.floor(index / size);
