@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Square(props: Props) {
-  // transparent meant there's no game piece in the square
+  // transparent means there's no game piece in the square
   const gamePieceColor =
     useAppSelector(
       (state): Color | undefined => state.app.gamePieces[props.index.toString()]
@@ -22,9 +22,10 @@ export function Square(props: Props) {
   return (
     <div className={`square col-${props.column} row-${props.row}`}>
       <span className="index-debug">{props.index}</span>
-      <div className={`gamepiece color-${gamePieceColor}`} />
       <div
-        className={`possible color-${isPossibleMove ? "black" : "transparent"}`}
+        className={`circle background-${gamePieceColor} ${
+          isPossibleMove ? "border" : ""
+        }`}
       />
     </div>
   );

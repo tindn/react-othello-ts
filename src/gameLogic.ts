@@ -34,10 +34,10 @@ export function getPossibleMoves(colorToMove: Color, gamePieces: GamePieces) {
   const gamePiecesByColor = getGamePiecesByColor(gamePieces);
   gamePiecesByColor[colorToMove].forEach((piece) => {
     allDirections.forEach((direction) => {
-      // debugger;
       let canMove = true;
       let captures: number[] = [];
       let currentPosition = parseInt(piece);
+      // keep moving in each direction
       while (canMove) {
         const nextSquarePosition = moveOne(currentPosition, direction);
         if (nextSquarePosition == -1) {
@@ -50,11 +50,12 @@ export function getPossibleMoves(colorToMove: Color, gamePieces: GamePieces) {
         }
         // if empty space
         if (gamePieces[nextSquarePosition] === undefined) {
+          // no possible capture
           if (captures.length === 0) {
             canMove = false;
             break;
           }
-          captures.push(nextSquarePosition);
+          // able to capture some
           possibleMoves[nextSquarePosition.toString()] = true;
           break;
         }

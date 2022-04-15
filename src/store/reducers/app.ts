@@ -16,7 +16,12 @@ const DEFAULT_STATE: AppState = {
     36: Color.white,
   },
   nextColorToPlay: Color.black,
-  possibleMoves: {},
+  possibleMoves: {
+    19: true,
+    26: true,
+    37: true,
+    44: true,
+  },
 };
 
 const AppSlice = createSlice({
