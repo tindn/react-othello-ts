@@ -12,6 +12,31 @@ export function AppHeader() {
   const hasPossibleMoves =
     Object.keys(useAppSelector((state) => state.app.possibleMoves)).length > 0;
   const dispatch = useAppDispatch();
+
+  function getWinner() {
+    const numWhite = gamePiecesByColor[Color.white].length;
+    const numBlack = gamePiecesByColor[Color.black].length;
+    if (numWhite > numBlack) {
+      return Color.white;
+    }
+    if (numWhite < numBlack) {
+      return Color.black;
+    }
+    return "tie";
+  }
+
+  function getGameoverText() {
+    const winner = getWinner();
+    switch (winner) {
+      case Color.white:
+        return "White wins!";
+      case Color.black:
+        return "Black wins!";
+      case "tie":
+        return "It's a tie, no one wins!";
+    }
+  }
+
   return (
     <header className="App-header">
       <div className="left">
@@ -38,7 +63,7 @@ export function AppHeader() {
           </div>
         </div>
         <div className="game-controls">
-          {hasPossibleMoves ? <span /> : <span>Good game!</span>}
+          {hasPossibleMoves ? <span /> : <span>{getGameoverText()}</span>}
           <button
             className="restart-game"
             type="button"
