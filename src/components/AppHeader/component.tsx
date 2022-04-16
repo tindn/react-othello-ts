@@ -14,15 +14,12 @@ export function AppHeader() {
   const dispatch = useAppDispatch();
 
   function getWinner() {
-    if (
-      gamePiecesByColor[Color.white].length >
-      gamePiecesByColor[Color.black].length
-    ) {
+    const numWhite = gamePiecesByColor[Color.white].length;
+    const numBlack = gamePiecesByColor[Color.black].length;
+    if (numWhite > numBlack) {
       return Color.white;
-    } else if (
-      gamePiecesByColor[Color.white].length <
-      gamePiecesByColor[Color.black].length
-    ) {
+    }
+    if (numWhite < numBlack) {
       return Color.black;
     }
     return "tie";
